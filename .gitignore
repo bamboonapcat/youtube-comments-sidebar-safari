@@ -1,0 +1,10 @@
+.DS_Store
+SafariProject/
+*SafariProject/
+DerivedData/
+build/
+*.xcuserstate
+xcuserdata/
+*.ipa
+*.dSYM
+

@@ -1,0 +1,128 @@
+/* YouTube Comments Sidebar: watch-page layout only */
+ytd-watch-flexy.ycr-layout-active #columns {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, var(--ycr-sidebar-width, 460px));
+  grid-template-areas:
+    "primary comments"
+    "related comments";
+  align-items: start;
+  column-gap: 24px;
+  row-gap: 24px;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+ytd-watch-flexy.ycr-layout-active #columns > #primary {
+  grid-area: primary;
+  min-width: 0 !important;
+  width: auto !important;
+  max-width: none !important;
+  padding-right: 0 !important;
+  margin: 0 !important;
+}
+
+ytd-watch-flexy.ycr-layout-active #columns > .ycr-comments-sidebar {
+  grid-area: comments;
+  display: block !important;
+  box-sizing: border-box;
+  min-width: 0;
+  width: 100% !important;
+  height: calc(100vh - var(--ytd-masthead-height, 56px) - 24px) !important;
+  max-height: calc(100vh - var(--ytd-masthead-height, 56px) - 24px) !important;
+  margin: 0 !important;
+  padding: 0 12px 0 0 !important;
+  position: sticky;
+  top: calc(var(--ytd-masthead-height, 56px) + 12px);
+  align-self: start;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+ytd-watch-flexy.ycr-layout-active #columns > ytd-comments.ycr-comments-sidebar > #header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding-top: 2px;
+  background: var(--yt-spec-base-background, #0f0f0f);
+}
+
+ytd-watch-flexy.ycr-layout-active #columns > #secondary.ycr-recommendations-bottom {
+  grid-area: related;
+  display: block !important;
+  box-sizing: border-box;
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+ytd-watch-flexy.ycr-layout-active #secondary.ycr-recommendations-bottom #secondary-inner,
+ytd-watch-flexy.ycr-layout-active #secondary.ycr-recommendations-bottom #related,
+ytd-watch-flexy.ycr-layout-active #secondary.ycr-recommendations-bottom
+  ytd-watch-next-secondary-results-renderer {
+  display: block !important;
+  box-sizing: border-box;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+}
+
+ytd-watch-flexy.ycr-layout-active #secondary.ycr-recommendations-bottom
+  ytd-watch-next-secondary-results-renderer #items {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 16px 20px;
+  width: 100% !important;
+}
+
+ytd-watch-flexy.ycr-layout-active #secondary.ycr-recommendations-bottom
+  ytd-watch-next-secondary-results-renderer #items > ytd-compact-video-renderer,
+ytd-watch-flexy.ycr-layout-active #secondary.ycr-recommendations-bottom
+  ytd-watch-next-secondary-results-renderer #items > ytd-compact-playlist-renderer,
+ytd-watch-flexy.ycr-layout-active #secondary.ycr-recommendations-bottom
+  ytd-watch-next-secondary-results-renderer #items > ytd-compact-radio-renderer {
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+ytd-watch-flexy.ycr-layout-active #secondary.ycr-recommendations-bottom
+  ytd-watch-next-secondary-results-renderer #items > ytd-continuation-item-renderer,
+ytd-watch-flexy.ycr-layout-active #secondary.ycr-recommendations-bottom
+  ytd-watch-next-secondary-results-renderer #items > yt-related-chip-cloud-renderer {
+  grid-column: 1 / -1;
+}
+
+/* 狭いウィンドウではYouTube本来の縦並びに近い表示へフォールバックします。 */
+@media (max-width: 1100px) {
+  ytd-watch-flexy.ycr-layout-active #columns {
+    display: flex !important;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  ytd-watch-flexy.ycr-layout-active #columns > #primary,
+  ytd-watch-flexy.ycr-layout-active #columns > .ycr-comments-sidebar,
+  ytd-watch-flexy.ycr-layout-active #columns > #secondary.ycr-recommendations-bottom {
+    width: 100% !important;
+  }
+
+  ytd-watch-flexy.ycr-layout-active #columns > .ycr-comments-sidebar {
+    height: 65vh !important;
+    max-height: 65vh !important;
+    position: static;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    order: 2;
+  }
+
+  ytd-watch-flexy.ycr-layout-active #columns > #primary {
+    order: 1;
+  }
+
+  ytd-watch-flexy.ycr-layout-active #columns > #secondary.ycr-recommendations-bottom {
+    order: 3;
+  }
+}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YouTube Comments Sidebar</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <h1>Comments Sidebar</h1>
+
+      <label class="toggle-row">
+        <span>
+          <strong>レイアウトを有効化</strong>
+          <small>動画ページを自動で並べ替えます</small>
+        </span>
+        <input id="enabled" type="checkbox" role="switch">
+      </label>
+
+      <label class="width-row" for="sidebar-width">
+        <span>コメント欄の幅</span>
+        <output id="width-output" for="sidebar-width">460px</output>
+      </label>
+      <input id="sidebar-width" type="range" min="360" max="640" step="20" value="460">
+
+      <p class="hint">変更は開いているYouTubeページにすぐ反映されます。</p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

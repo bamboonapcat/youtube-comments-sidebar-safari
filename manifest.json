@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Comments Sidebar",
+  "version": "1.0.0",
+  "description": "YouTubeのコメントを動画の右側、おすすめ動画をその下に表示します。",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://www.youtube.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/watch*"
+      ],
+      "js": [
+        "content/content.js"
+      ],
+      "css": [
+        "content/styles.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "YouTube Comments Sidebar",
+    "default_popup": "popup/popup.html"
+  }
+}
